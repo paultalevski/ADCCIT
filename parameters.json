@@ -1,0 +1,207 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationAccounts_aa_ase_uat_hscope_name": {
+            "value": null
+        },
+        "certificates_AzureClassicRunAsCertificate_base64Value": {
+            "value": null
+        },
+        "certificates_AzureRunAsCertificate_base64Value": {
+            "value": null
+        },
+        "virtualMachines_ase_hscope_wb01_name": {
+            "value": null
+        },
+        "virtualMachines_ase_hscope_wdb1_name": {
+            "value": null
+        },
+        "networkInterfaces_ase_hscope_wb01199_name": {
+            "value": null
+        },
+        "networkInterfaces_ase_hscope_wdb1440_name": {
+            "value": null
+        },
+        "publicIPAddresses_ase_hscope_wb01_ip_name": {
+            "value": null
+        },
+        "publicIPAddresses_ase_hscope_wdb1_ip_name": {
+            "value": null
+        },
+        "storageAccounts_rgaseuathealthscope01_name": {
+            "value": null
+        },
+        "automationAccounts_aa_ase_uat_hscope_name_1": {
+            "value": null
+        },
+        "networkSecurityGroups_sg_ase_uat_hscope_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_ase_hscope_wb01_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_ase_hscope_wdb1_name": {
+            "value": null
+        },
+        "modules_Azure_name": {
+            "value": null
+        },
+        "modules_AzureRM.Sql_name": {
+            "value": null
+        },
+        "modules_Azure.Storage_name": {
+            "value": null
+        },
+        "runbooks_StopAzureV2Vm_name": {
+            "value": null
+        },
+        "runbooks_StartAzureV2Vm_name": {
+            "value": null
+        },
+        "modules_AzureRM.Compute_name": {
+            "value": null
+        },
+        "modules_AzureRM.Profile_name": {
+            "value": null
+        },
+        "modules_AzureRM.Storage_name": {
+            "value": null
+        },
+        "modules_AzureRM.Resources_name": {
+            "value": null
+        },
+        "modules_AzureRM.Automation_name": {
+            "value": null
+        },
+        "schedules_healthscopevmstop_name": {
+            "value": null
+        },
+        "schedules_healthscopevmstart_name": {
+            "value": null
+        },
+        "securityRules_allow_sql_melb_name": {
+            "value": null
+        },
+        "securityRules_default_allow_rdp_name": {
+            "value": null
+        },
+        "connections_AzureRunAsConnection_name": {
+            "value": null
+        },
+        "modules_Microsoft.PowerShell.Core_name": {
+            "value": null
+        },
+        "modules_Microsoft.WSMan.Management_name": {
+            "value": null
+        },
+        "certificates_AzureRunAsCertificate_name": {
+            "value": null
+        },
+        "modules_Microsoft.PowerShell.Utility_name": {
+            "value": null
+        },
+        "modules_Microsoft.PowerShell.Security_name": {
+            "value": null
+        },
+        "modules_Microsoft.PowerShell.Management_name": {
+            "value": null
+        },
+        "connections_AzureClassicRunAsConnection_name": {
+            "value": null
+        },
+        "modules_Microsoft.PowerShell.Diagnostics_name": {
+            "value": null
+        },
+        "certificates_AzureClassicRunAsCertificate_name": {
+            "value": null
+        },
+        "jobs_d209e9f9_ed7d_4c25_adc7_a82979238ba3_name": {
+            "value": null
+        },
+        "jobs_9209ca6e_cedc_4450_af96_83acc63cb44d_name": {
+            "value": null
+        },
+        "jobs_45afa8bc_1550_48bf_bd95_360f10ace1ae_name": {
+            "value": null
+        },
+        "jobs_2aa8e6c0_1711_49c9_8c18_cb06192f6c58_name": {
+            "value": null
+        },
+        "jobs_d24df907_202c_4c6b_a42c_c7a0046329a4_name": {
+            "value": null
+        },
+        "jobs_8fc28146_819b_4553_9ee3_e457f5411e81_name": {
+            "value": null
+        },
+        "jobs_39e322c3_8ce1_44e8_9456_70fe0429fb15_name": {
+            "value": null
+        },
+        "jobs_22282005_b837_4f74_b361_32e2059a9b84_name": {
+            "value": null
+        },
+        "jobs_605510cc_1496_4338_b890_8f97d7623c9f_name": {
+            "value": null
+        },
+        "jobs_eac97ee1_3e34_42e8_a7dd_e8bd0e074e38_name": {
+            "value": null
+        },
+        "jobs_cd4ab14a_f8b8_49d0_8802_c403c979d8f0_name": {
+            "value": null
+        },
+        "jobs_e85a45d1_285f_4ecc_914d_9a3d3e62d0ec_name": {
+            "value": null
+        },
+        "jobs_9a07a001_a372_4753_9e39_4e6dcbaa2805_name": {
+            "value": null
+        },
+        "jobs_13628bf5_d539_43be_947c_fc8f689d1f35_name": {
+            "value": null
+        },
+        "jobs_49f83d3b_15f4_464f_9852_d809b6cd788d_name": {
+            "value": null
+        },
+        "jobs_1aecd62e_3515_411c_b0e7_658d34ebbafa_name": {
+            "value": null
+        },
+        "jobs_86bf5fc1_59a7_4d05_a3d0_ff6e2b9a2fa4_name": {
+            "value": null
+        },
+        "jobs_b43a40a9_3d81_4677_a786_2e5d400bfd04_name": {
+            "value": null
+        },
+        "jobs_bb3532d5_17d1_40d2_b02e_980addb41297_name": {
+            "value": null
+        },
+        "jobs_f54e96b9_f6da_4658_a36f_e51faf684b3b_name": {
+            "value": null
+        },
+        "jobs_36f62952_bf96_44b7_a91a_e70bd2ea300d_name": {
+            "value": null
+        },
+        "jobs_d26e1ede_579e_495a_a58b_80ecce95415e_name": {
+            "value": null
+        },
+        "jobs_0a7cc4bf_5eb4_4bbe_8e07_3176e7d3de06_name": {
+            "value": null
+        },
+        "jobs_48784bc0_24ed_41fe_88b0_53cba16f5125_name": {
+            "value": null
+        },
+        "jobs_74b3ffd2_80ab_4950_a00e_03f551b72f14_name": {
+            "value": null
+        },
+        "modules_Orchestrator.AssetManagement.Cmdlets_name": {
+            "value": null
+        },
+        "jobSchedules_90ac5dcf_370c_4d5a_ae3e_6ccf1dc3a3f4_name": {
+            "value": null
+        },
+        "networkInterfaces_ase_hscope_wb01199_id": {
+            "value": null
+        },
+        "networkInterfaces_ase_hscope_wdb1440_id": {
+            "value": null
+        }
+    }
+}

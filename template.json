@@ -1,0 +1,1592 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "automationAccounts_aa_ase_uat_hscope_name": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "certificates_AzureClassicRunAsCertificate_base64Value": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "certificates_AzureRunAsCertificate_base64Value": {
+            "defaultValue": null,
+            "type": "SecureString"
+        },
+        "virtualMachines_ase_hscope_wb01_name": {
+            "defaultValue": "ase-hscope-wb01",
+            "type": "String"
+        },
+        "virtualMachines_ase_hscope_wdb1_name": {
+            "defaultValue": "ase-hscope-wdb1",
+            "type": "String"
+        },
+        "networkInterfaces_ase_hscope_wb01199_name": {
+            "defaultValue": "ase-hscope-wb01199",
+            "type": "String"
+        },
+        "networkInterfaces_ase_hscope_wdb1440_name": {
+            "defaultValue": "ase-hscope-wdb1440",
+            "type": "String"
+        },
+        "publicIPAddresses_ase_hscope_wb01_ip_name": {
+            "defaultValue": "ase-hscope-wb01-ip",
+            "type": "String"
+        },
+        "publicIPAddresses_ase_hscope_wdb1_ip_name": {
+            "defaultValue": "ase-hscope-wdb1-ip",
+            "type": "String"
+        },
+        "storageAccounts_rgaseuathealthscope01_name": {
+            "defaultValue": "rgaseuathealthscope01",
+            "type": "String"
+        },
+        "automationAccounts_aa_ase_uat_hscope_name_1": {
+            "defaultValue": "aa-ase-uat-hscope",
+            "type": "String"
+        },
+        "networkSecurityGroups_sg_ase_uat_hscope_name": {
+            "defaultValue": "sg-ase-uat-hscope",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_ase_hscope_wb01_name": {
+            "defaultValue": "shutdown-computevm-ase-hscope-wb01",
+            "type": "String"
+        },
+        "schedules_shutdown_computevm_ase_hscope_wdb1_name": {
+            "defaultValue": "shutdown-computevm-ase-hscope-wdb1",
+            "type": "String"
+        },
+        "modules_Azure_name": {
+            "defaultValue": "Azure",
+            "type": "String"
+        },
+        "modules_AzureRM.Sql_name": {
+            "defaultValue": "AzureRM.Sql",
+            "type": "String"
+        },
+        "modules_Azure.Storage_name": {
+            "defaultValue": "Azure.Storage",
+            "type": "String"
+        },
+        "runbooks_StopAzureV2Vm_name": {
+            "defaultValue": "StopAzureV2Vm",
+            "type": "String"
+        },
+        "runbooks_StartAzureV2Vm_name": {
+            "defaultValue": "StartAzureV2Vm",
+            "type": "String"
+        },
+        "modules_AzureRM.Compute_name": {
+            "defaultValue": "AzureRM.Compute",
+            "type": "String"
+        },
+        "modules_AzureRM.Profile_name": {
+            "defaultValue": "AzureRM.Profile",
+            "type": "String"
+        },
+        "modules_AzureRM.Storage_name": {
+            "defaultValue": "AzureRM.Storage",
+            "type": "String"
+        },
+        "modules_AzureRM.Resources_name": {
+            "defaultValue": "AzureRM.Resources",
+            "type": "String"
+        },
+        "modules_AzureRM.Automation_name": {
+            "defaultValue": "AzureRM.Automation",
+            "type": "String"
+        },
+        "schedules_healthscopevmstop_name": {
+            "defaultValue": "healthscopevmstop",
+            "type": "String"
+        },
+        "schedules_healthscopevmstart_name": {
+            "defaultValue": "healthscopevmstart",
+            "type": "String"
+        },
+        "securityRules_allow_sql_melb_name": {
+            "defaultValue": "allow-sql-melb",
+            "type": "String"
+        },
+        "securityRules_default_allow_rdp_name": {
+            "defaultValue": "default-allow-rdp",
+            "type": "String"
+        },
+        "connections_AzureRunAsConnection_name": {
+            "defaultValue": "AzureRunAsConnection",
+            "type": "String"
+        },
+        "modules_Microsoft.PowerShell.Core_name": {
+            "defaultValue": "Microsoft.PowerShell.Core",
+            "type": "String"
+        },
+        "modules_Microsoft.WSMan.Management_name": {
+            "defaultValue": "Microsoft.WSMan.Management",
+            "type": "String"
+        },
+        "certificates_AzureRunAsCertificate_name": {
+            "defaultValue": "AzureRunAsCertificate",
+            "type": "String"
+        },
+        "modules_Microsoft.PowerShell.Utility_name": {
+            "defaultValue": "Microsoft.PowerShell.Utility",
+            "type": "String"
+        },
+        "modules_Microsoft.PowerShell.Security_name": {
+            "defaultValue": "Microsoft.PowerShell.Security",
+            "type": "String"
+        },
+        "modules_Microsoft.PowerShell.Management_name": {
+            "defaultValue": "Microsoft.PowerShell.Management",
+            "type": "String"
+        },
+        "connections_AzureClassicRunAsConnection_name": {
+            "defaultValue": "AzureClassicRunAsConnection",
+            "type": "String"
+        },
+        "modules_Microsoft.PowerShell.Diagnostics_name": {
+            "defaultValue": "Microsoft.PowerShell.Diagnostics",
+            "type": "String"
+        },
+        "certificates_AzureClassicRunAsCertificate_name": {
+            "defaultValue": "AzureClassicRunAsCertificate",
+            "type": "String"
+        },
+        "jobs_d209e9f9_ed7d_4c25_adc7_a82979238ba3_name": {
+            "defaultValue": "d209e9f9-ed7d-4c25-adc7-a82979238ba3",
+            "type": "String"
+        },
+        "jobs_9209ca6e_cedc_4450_af96_83acc63cb44d_name": {
+            "defaultValue": "9209ca6e-cedc-4450-af96-83acc63cb44d",
+            "type": "String"
+        },
+        "jobs_45afa8bc_1550_48bf_bd95_360f10ace1ae_name": {
+            "defaultValue": "45afa8bc-1550-48bf-bd95-360f10ace1ae",
+            "type": "String"
+        },
+        "jobs_2aa8e6c0_1711_49c9_8c18_cb06192f6c58_name": {
+            "defaultValue": "2aa8e6c0-1711-49c9-8c18-cb06192f6c58",
+            "type": "String"
+        },
+        "jobs_d24df907_202c_4c6b_a42c_c7a0046329a4_name": {
+            "defaultValue": "d24df907-202c-4c6b-a42c-c7a0046329a4",
+            "type": "String"
+        },
+        "jobs_8fc28146_819b_4553_9ee3_e457f5411e81_name": {
+            "defaultValue": "8fc28146-819b-4553-9ee3-e457f5411e81",
+            "type": "String"
+        },
+        "jobs_39e322c3_8ce1_44e8_9456_70fe0429fb15_name": {
+            "defaultValue": "39e322c3-8ce1-44e8-9456-70fe0429fb15",
+            "type": "String"
+        },
+        "jobs_22282005_b837_4f74_b361_32e2059a9b84_name": {
+            "defaultValue": "22282005-b837-4f74-b361-32e2059a9b84",
+            "type": "String"
+        },
+        "jobs_605510cc_1496_4338_b890_8f97d7623c9f_name": {
+            "defaultValue": "605510cc-1496-4338-b890-8f97d7623c9f",
+            "type": "String"
+        },
+        "jobs_eac97ee1_3e34_42e8_a7dd_e8bd0e074e38_name": {
+            "defaultValue": "eac97ee1-3e34-42e8-a7dd-e8bd0e074e38",
+            "type": "String"
+        },
+        "jobs_cd4ab14a_f8b8_49d0_8802_c403c979d8f0_name": {
+            "defaultValue": "cd4ab14a-f8b8-49d0-8802-c403c979d8f0",
+            "type": "String"
+        },
+        "jobs_e85a45d1_285f_4ecc_914d_9a3d3e62d0ec_name": {
+            "defaultValue": "e85a45d1-285f-4ecc-914d-9a3d3e62d0ec",
+            "type": "String"
+        },
+        "jobs_9a07a001_a372_4753_9e39_4e6dcbaa2805_name": {
+            "defaultValue": "9a07a001-a372-4753-9e39-4e6dcbaa2805",
+            "type": "String"
+        },
+        "jobs_13628bf5_d539_43be_947c_fc8f689d1f35_name": {
+            "defaultValue": "13628bf5-d539-43be-947c-fc8f689d1f35",
+            "type": "String"
+        },
+        "jobs_49f83d3b_15f4_464f_9852_d809b6cd788d_name": {
+            "defaultValue": "49f83d3b-15f4-464f-9852-d809b6cd788d",
+            "type": "String"
+        },
+        "jobs_1aecd62e_3515_411c_b0e7_658d34ebbafa_name": {
+            "defaultValue": "1aecd62e-3515-411c-b0e7-658d34ebbafa",
+            "type": "String"
+        },
+        "jobs_86bf5fc1_59a7_4d05_a3d0_ff6e2b9a2fa4_name": {
+            "defaultValue": "86bf5fc1-59a7-4d05-a3d0-ff6e2b9a2fa4",
+            "type": "String"
+        },
+        "jobs_b43a40a9_3d81_4677_a786_2e5d400bfd04_name": {
+            "defaultValue": "b43a40a9-3d81-4677-a786-2e5d400bfd04",
+            "type": "String"
+        },
+        "jobs_bb3532d5_17d1_40d2_b02e_980addb41297_name": {
+            "defaultValue": "bb3532d5-17d1-40d2-b02e-980addb41297",
+            "type": "String"
+        },
+        "jobs_f54e96b9_f6da_4658_a36f_e51faf684b3b_name": {
+            "defaultValue": "f54e96b9-f6da-4658-a36f-e51faf684b3b",
+            "type": "String"
+        },
+        "jobs_36f62952_bf96_44b7_a91a_e70bd2ea300d_name": {
+            "defaultValue": "36f62952-bf96-44b7-a91a-e70bd2ea300d",
+            "type": "String"
+        },
+        "jobs_d26e1ede_579e_495a_a58b_80ecce95415e_name": {
+            "defaultValue": "d26e1ede-579e-495a-a58b-80ecce95415e",
+            "type": "String"
+        },
+        "jobs_0a7cc4bf_5eb4_4bbe_8e07_3176e7d3de06_name": {
+            "defaultValue": "0a7cc4bf-5eb4-4bbe-8e07-3176e7d3de06",
+            "type": "String"
+        },
+        "jobs_48784bc0_24ed_41fe_88b0_53cba16f5125_name": {
+            "defaultValue": "48784bc0-24ed-41fe-88b0-53cba16f5125",
+            "type": "String"
+        },
+        "jobs_74b3ffd2_80ab_4950_a00e_03f551b72f14_name": {
+            "defaultValue": "74b3ffd2-80ab-4950-a00e-03f551b72f14",
+            "type": "String"
+        },
+        "modules_Orchestrator.AssetManagement.Cmdlets_name": {
+            "defaultValue": "Orchestrator.AssetManagement.Cmdlets",
+            "type": "String"
+        },
+        "jobSchedules_90ac5dcf_370c_4d5a_ae3e_6ccf1dc3a3f4_name": {
+            "defaultValue": "90ac5dcf-370c-4d5a-ae3e-6ccf1dc3a3f4",
+            "type": "String"
+        },
+        "networkInterfaces_ase_hscope_wb01199_id": {
+            "defaultValue": "/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-ehealth-infra/providers/Microsoft.Network/virtualNetworks/vn-aus-ehealth-infra/subnets/vpn-hs-subnet",
+            "type": "String"
+        },
+        "networkInterfaces_ase_hscope_wdb1440_id": {
+            "defaultValue": "/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-ehealth-infra/providers/Microsoft.Network/virtualNetworks/vn-aus-ehealth-infra/subnets/vpn-hs-subnet",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope'.",
+            "type": "Microsoft.Automation/automationAccounts",
+            "name": "[parameters('automationAccounts_aa_ase_uat_hscope_name_1')]",
+            "apiVersion": "2015-10-31",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "sku": {
+                    "name": "[parameters('automationAccounts_aa_ase_uat_hscope_name')]"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Compute/virtualMachines/ase-hscope-wb01'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_ase_hscope_wb01_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_A2_v2"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftWindowsServer",
+                        "offer": "WindowsServer",
+                        "sku": "2012-R2-Datacenter",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[parameters('virtualMachines_ase_hscope_wb01_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_ase_hscope_wb01_name'),'20170329103245.vhd'))]"
+                        },
+                        "caching": "ReadWrite",
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "datadisk1",
+                            "createOption": "Empty",
+                            "vhd": {
+                                "uri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', '/datadisk1/datadisk1.vhd')]"
+                            },
+                            "caching": "ReadOnly",
+                            "diskSizeGB": 80
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_ase_hscope_wb01_name')]",
+                    "adminUsername": "superusr",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_ase_hscope_wb01199_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_rgaseuathealthscope01_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_ase_hscope_wb01199_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Compute/virtualMachines/ase-hscope-wdb1'.",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "[parameters('virtualMachines_ase_hscope_wdb1_name')]",
+            "apiVersion": "2016-04-30-preview",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "hardwareProfile": {
+                    "vmSize": "Standard_DS3_v2_Promo"
+                },
+                "storageProfile": {
+                    "imageReference": {
+                        "publisher": "MicrosoftSQLServer",
+                        "offer": "SQL2012SP3-WS2012R2",
+                        "sku": "Web",
+                        "version": "latest"
+                    },
+                    "osDisk": {
+                        "osType": "Windows",
+                        "name": "[parameters('virtualMachines_ase_hscope_wdb1_name')]",
+                        "createOption": "FromImage",
+                        "vhd": {
+                            "uri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_ase_hscope_wdb1_name'),'20170329110459.vhd'))]"
+                        },
+                        "caching": "ReadWrite",
+                        "diskSizeGB": 127
+                    },
+                    "dataDisks": [
+                        {
+                            "lun": 0,
+                            "name": "[concat(parameters('virtualMachines_ase_hscope_wdb1_name'),'-disk-1')]",
+                            "createOption": "Empty",
+                            "vhd": {
+                                "uri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', concat('/vhds/', parameters('virtualMachines_ase_hscope_wdb1_name'),'-disk-1-20170329110459.vhd'))]"
+                            },
+                            "caching": "ReadOnly",
+                            "diskSizeGB": 1023
+                        }
+                    ]
+                },
+                "osProfile": {
+                    "computerName": "[parameters('virtualMachines_ase_hscope_wdb1_name')]",
+                    "adminUsername": "superusr",
+                    "windowsConfiguration": {
+                        "provisionVMAgent": true,
+                        "enableAutomaticUpdates": true
+                    },
+                    "secrets": []
+                },
+                "networkProfile": {
+                    "networkInterfaces": [
+                        {
+                            "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_ase_hscope_wdb1440_name'))]"
+                        }
+                    ]
+                },
+                "diagnosticsProfile": {
+                    "bootDiagnostics": {
+                        "enabled": true,
+                        "storageUri": "[concat('https', '://', parameters('storageAccounts_rgaseuathealthscope01_name'), '.blob.core.windows.net', '/')]"
+                    }
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccounts_rgaseuathealthscope01_name'))]",
+                "[resourceId('Microsoft.Network/networkInterfaces', parameters('networkInterfaces_ase_hscope_wdb1440_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/microsoft.devtestlab/schedules/shutdown-computevm-ase-hscope-wb01'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_ase_hscope_wb01_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "status": "Disabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1800"
+                },
+                "timeZoneId": "AUS Eastern Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 15,
+                    "webhookUrl": ""
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wb01_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "b6e4c07d-b5bf-4caa-80aa-23989fb2b595"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wb01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/microsoft.devtestlab/schedules/shutdown-computevm-ase-hscope-wdb1'.",
+            "type": "microsoft.devtestlab/schedules",
+            "name": "[parameters('schedules_shutdown_computevm_ase_hscope_wdb1_name')]",
+            "apiVersion": "2016-05-15",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "status": "Disabled",
+                "taskType": "ComputeVmShutdownTask",
+                "dailyRecurrence": {
+                    "time": "1800"
+                },
+                "timeZoneId": "AUS Eastern Standard Time",
+                "notificationSettings": {
+                    "status": "Disabled",
+                    "timeInMinutes": 15
+                },
+                "targetResourceId": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wdb1_name'))]",
+                "provisioningState": "Succeeded",
+                "uniqueIdentifier": "ad8cc804-0f69-4cc8-b973-3fab3d879a3f"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wdb1_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/networkInterfaces/ase-hscope-wb01199'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_ase_hscope_wb01199_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "228285a3-881d-40b2-a703-39f56004983c",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"5e63c321-5a00-4c78-b76e-91272ff1f107\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "172.16.34.5",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ase_hscope_wb01_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[parameters('networkInterfaces_ase_hscope_wb01199_id')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]"
+                },
+                "primary": true,
+                "virtualMachine": {
+                    "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wb01_name'))]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ase_hscope_wb01_ip_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wb01_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/networkInterfaces/ase-hscope-wdb1440'.",
+            "type": "Microsoft.Network/networkInterfaces",
+            "name": "[parameters('networkInterfaces_ase_hscope_wdb1440_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "22ccc7cb-9a7d-4acf-8f6b-2d56ccbf1271",
+                "ipConfigurations": [
+                    {
+                        "name": "ipconfig1",
+                        "etag": "W/\"d0e457ba-ba04-4d94-9c9f-b09b2c809941\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "privateIPAddress": "172.16.34.4",
+                            "privateIPAllocationMethod": "Dynamic",
+                            "publicIPAddress": {
+                                "id": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ase_hscope_wdb1_ip_name'))]"
+                            },
+                            "subnet": {
+                                "id": "[parameters('networkInterfaces_ase_hscope_wdb1440_id')]"
+                            },
+                            "primary": true,
+                            "privateIPAddressVersion": "IPv4"
+                        }
+                    }
+                ],
+                "dnsSettings": {
+                    "dnsServers": [],
+                    "appliedDnsServers": []
+                },
+                "enableAcceleratedNetworking": false,
+                "enableIPForwarding": false,
+                "networkSecurityGroup": {
+                    "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]"
+                },
+                "primary": true,
+                "virtualMachine": {
+                    "id": "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wdb1_name'))]"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_ase_hscope_wdb1_ip_name'))]",
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]",
+                "[resourceId('Microsoft.Compute/virtualMachines', parameters('virtualMachines_ase_hscope_wdb1_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/networkSecurityGroups/sg-ase-uat-hscope'.",
+            "type": "Microsoft.Network/networkSecurityGroups",
+            "name": "[parameters('networkSecurityGroups_sg_ase_uat_hscope_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "997d089f-d11c-4e9f-a72b-da8ff3e79dc9",
+                "securityRules": [
+                    {
+                        "name": "default-allow-rdp",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "3389",
+                            "sourceAddressPrefix": "101.178.166.64/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1000,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "allow-sql-melb",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "protocol": "TCP",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "1433",
+                            "sourceAddressPrefix": "101.178.166.64/32",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 1010,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ],
+                "defaultSecurityRules": [
+                    {
+                        "name": "AllowVnetInBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowAzureLoadBalancerInBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow inbound traffic from azure load balancer",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "AzureLoadBalancer",
+                            "destinationAddressPrefix": "*",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllInBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all inbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Inbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowVnetOutBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to all VMs in VNET",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "VirtualNetwork",
+                            "destinationAddressPrefix": "VirtualNetwork",
+                            "access": "Allow",
+                            "priority": 65000,
+                            "direction": "Outbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "AllowInternetOutBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Allow outbound traffic from all VMs to Internet",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "Internet",
+                            "access": "Allow",
+                            "priority": 65001,
+                            "direction": "Outbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    },
+                    {
+                        "name": "DenyAllOutBound",
+                        "etag": "W/\"a903ecd9-db70-44be-8261-8c3631158b49\"",
+                        "properties": {
+                            "provisioningState": "Succeeded",
+                            "description": "Deny all outbound traffic",
+                            "protocol": "*",
+                            "sourcePortRange": "*",
+                            "destinationPortRange": "*",
+                            "sourceAddressPrefix": "*",
+                            "destinationAddressPrefix": "*",
+                            "access": "Deny",
+                            "priority": 65500,
+                            "direction": "Outbound",
+                            "sourceAddressPrefixes": [],
+                            "destinationAddressPrefixes": []
+                        }
+                    }
+                ]
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/publicIPAddresses/ase-hscope-wb01-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_ase_hscope_wb01_ip_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "05c6fb31-a6a6-4553-aa3b-679ab9041cc5",
+                "ipAddress": "52.255.58.114",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "hscopeweb01",
+                    "fqdn": "hscopeweb01.australiasoutheast.cloudapp.azure.com"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/publicIPAddresses/ase-hscope-wdb1-ip'.",
+            "type": "Microsoft.Network/publicIPAddresses",
+            "name": "[parameters('publicIPAddresses_ase_hscope_wdb1_ip_name')]",
+            "apiVersion": "2017-06-01",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "resourceGuid": "af7f0fe4-3bd6-41e9-8c70-c38e1a3cd4ef",
+                "ipAddress": "52.255.43.120",
+                "publicIPAddressVersion": "IPv4",
+                "publicIPAllocationMethod": "Static",
+                "idleTimeoutInMinutes": 4,
+                "dnsSettings": {
+                    "domainNameLabel": "hscopedb01",
+                    "fqdn": "hscopedb01.australiasoutheast.cloudapp.azure.com"
+                }
+            },
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Storage/storageAccounts/rgaseuathealthscope01'.",
+            "type": "Microsoft.Storage/storageAccounts",
+            "sku": {
+                "name": "Standard_LRS",
+                "tier": "Standard"
+            },
+            "kind": "Storage",
+            "name": "[parameters('storageAccounts_rgaseuathealthscope01_name')]",
+            "apiVersion": "2016-01-01",
+            "location": "australiasoutheast",
+            "tags": {},
+            "scale": null,
+            "properties": {},
+            "dependsOn": []
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/runbooks/StartAzureV2Vm'.",
+            "type": "Microsoft.Automation/automationAccounts/runbooks",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('runbooks_StartAzureV2Vm_name'))]",
+            "apiVersion": "2015-10-31",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "runbookType": "GraphPowerShell",
+                "logVerbose": false,
+                "logProgress": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/runbooks/StopAzureV2Vm'.",
+            "type": "Microsoft.Automation/automationAccounts/runbooks",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('runbooks_StopAzureV2Vm_name'))]",
+            "apiVersion": "2015-10-31",
+            "location": "australiasoutheast",
+            "scale": null,
+            "properties": {
+                "runbookType": "GraphPowerShell",
+                "logVerbose": false,
+                "logProgress": false
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Azure'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Azure_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Azure.Storage'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Azure.Storage_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Automation'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Automation_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Compute'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Compute_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.2.1",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Profile'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Profile_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Resources'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Resources_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Sql'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Sql_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/AzureRM.Storage'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_AzureRM.Storage_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0.3",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.PowerShell.Core'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.PowerShell.Core_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "0.0",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.PowerShell.Diagnostics'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.PowerShell.Diagnostics_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": null,
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.PowerShell.Management'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.PowerShell.Management_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": null,
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.PowerShell.Security'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.PowerShell.Security_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": null,
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.PowerShell.Utility'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.PowerShell.Utility_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": null,
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Microsoft.WSMan.Management'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Microsoft.WSMan.Management_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": null,
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/modules/Orchestrator.AssetManagement.Cmdlets'.",
+            "type": "Microsoft.Automation/automationAccounts/modules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('modules_Orchestrator.AssetManagement.Cmdlets_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "isGlobal": true,
+                "version": "1.0",
+                "sizeInBytes": 0
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/certificates/AzureClassicRunAsCertificate'.",
+            "type": "Microsoft.Automation/automationAccounts/certificates",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('certificates_AzureClassicRunAsCertificate_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": "This certificate is used to authenticate with Azure so that you can manage Azure classic resources from runbooks. For details on this certificate, or to manage it, go to this account’s Settings.  For example usage, see the tutorial runbook in this account.",
+                "base64Value": "[parameters('certificates_AzureClassicRunAsCertificate_base64Value')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/certificates/AzureRunAsCertificate'.",
+            "type": "Microsoft.Automation/automationAccounts/certificates",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('certificates_AzureRunAsCertificate_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": "This certificate is used to authenticate with the service principal that was automatically created for this account. For details on this service principal and certificate, or to recreate them, go to this account’s Settings. For example usage, see the tutorial runbook in this account.",
+                "base64Value": "[parameters('certificates_AzureRunAsCertificate_base64Value')]"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/connections/AzureClassicRunAsConnection'.",
+            "type": "Microsoft.Automation/automationAccounts/connections",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('connections_AzureClassicRunAsConnection_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": null,
+                "fieldDefinitionValues": null,
+                "connectionType": {
+                    "name": "AzureClassicCertificate"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/connections/AzureRunAsConnection'.",
+            "type": "Microsoft.Automation/automationAccounts/connections",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('connections_AzureRunAsConnection_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": null,
+                "fieldDefinitionValues": null,
+                "connectionType": {
+                    "name": "AzureServicePrincipal"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/schedules/healthscopevmstart'.",
+            "type": "Microsoft.Automation/automationAccounts/schedules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('schedules_healthscopevmstart_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": "Start Mon-Fri 8:00 MA",
+                "startTime": "2017-08-08T08:00:00+10:00",
+                "expiryTime": "9999-12-31T23:59:59.9999999+00:00",
+                "isEnabled": true,
+                "interval": 1,
+                "frequency": "Week"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/schedules/healthscopevmstop'.",
+            "type": "Microsoft.Automation/automationAccounts/schedules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('schedules_healthscopevmstop_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "description": "HealthScope VM's shutdown everyday \n6:00 PM ",
+                "startTime": "2017-09-21T18:00:00+10:00",
+                "expiryTime": "9999-12-31T23:59:00+11:00",
+                "isEnabled": true,
+                "interval": 1,
+                "frequency": "Week"
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/d209e9f9-ed7d-4c25-adc7-a82979238ba3'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_d209e9f9_ed7d_4c25_adc7_a82979238ba3_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/9209ca6e-cedc-4450-af96-83acc63cb44d'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_9209ca6e_cedc_4450_af96_83acc63cb44d_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/45afa8bc-1550-48bf-bd95-360f10ace1ae'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_45afa8bc_1550_48bf_bd95_360f10ace1ae_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/2aa8e6c0-1711-49c9-8c18-cb06192f6c58'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_2aa8e6c0_1711_49c9_8c18_cb06192f6c58_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/d24df907-202c-4c6b-a42c-c7a0046329a4'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_d24df907_202c_4c6b_a42c_c7a0046329a4_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/8fc28146-819b-4553-9ee3-e457f5411e81'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_8fc28146_819b_4553_9ee3_e457f5411e81_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/39e322c3-8ce1-44e8-9456-70fe0429fb15'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_39e322c3_8ce1_44e8_9456_70fe0429fb15_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/22282005-b837-4f74-b361-32e2059a9b84'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_22282005_b837_4f74_b361_32e2059a9b84_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/605510cc-1496-4338-b890-8f97d7623c9f'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_605510cc_1496_4338_b890_8f97d7623c9f_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/eac97ee1-3e34-42e8-a7dd-e8bd0e074e38'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_eac97ee1_3e34_42e8_a7dd_e8bd0e074e38_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/cd4ab14a-f8b8-49d0-8802-c403c979d8f0'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_cd4ab14a_f8b8_49d0_8802_c403c979d8f0_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/e85a45d1-285f-4ecc-914d-9a3d3e62d0ec'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_e85a45d1_285f_4ecc_914d_9a3d3e62d0ec_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/9a07a001-a372-4753-9e39-4e6dcbaa2805'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_9a07a001_a372_4753_9e39_4e6dcbaa2805_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/13628bf5-d539-43be-947c-fc8f689d1f35'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_13628bf5_d539_43be_947c_fc8f689d1f35_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/49f83d3b-15f4-464f-9852-d809b6cd788d'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_49f83d3b_15f4_464f_9852_d809b6cd788d_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/1aecd62e-3515-411c-b0e7-658d34ebbafa'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_1aecd62e_3515_411c_b0e7_658d34ebbafa_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/86bf5fc1-59a7-4d05-a3d0-ff6e2b9a2fa4'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_86bf5fc1_59a7_4d05_a3d0_ff6e2b9a2fa4_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/b43a40a9-3d81-4677-a786-2e5d400bfd04'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_b43a40a9_3d81_4677_a786_2e5d400bfd04_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/bb3532d5-17d1-40d2-b02e-980addb41297'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_bb3532d5_17d1_40d2_b02e_980addb41297_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/f54e96b9-f6da-4658-a36f-e51faf684b3b'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_f54e96b9_f6da_4658_a36f_e51faf684b3b_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/36f62952-bf96-44b7-a91a-e70bd2ea300d'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_36f62952_bf96_44b7_a91a_e70bd2ea300d_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/d26e1ede-579e-495a-a58b-80ecce95415e'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_d26e1ede_579e_495a_a58b_80ecce95415e_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/0a7cc4bf-5eb4-4bbe-8e07-3176e7d3de06'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_0a7cc4bf_5eb4_4bbe_8e07_3176e7d3de06_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/48784bc0-24ed-41fe-88b0-53cba16f5125'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_48784bc0_24ed_41fe_88b0_53cba16f5125_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobs/74b3ffd2-80ab-4950-a00e-03f551b72f14'.",
+            "type": "Microsoft.Automation/automationAccounts/jobs",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobs_74b3ffd2_80ab_4950_a00e_03f551b72f14_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                }
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourcegroups/rg-ase-uat-healthscope/providers/Microsoft.Automation/automationAccounts/aa-ase-uat-hscope/jobSchedules/90ac5dcf-370c-4d5a-ae3e-6ccf1dc3a3f4'.",
+            "type": "Microsoft.Automation/automationAccounts/jobSchedules",
+            "name": "[concat(parameters('automationAccounts_aa_ase_uat_hscope_name_1'), '/', parameters('jobSchedules_90ac5dcf_370c_4d5a_ae3e_6ccf1dc3a3f4_name'))]",
+            "apiVersion": "2015-10-31",
+            "scale": null,
+            "properties": {
+                "runbook": {
+                    "name": "StopAzureV2Vm"
+                },
+                "schedule": {
+                    "name": "healthscopevmstop"
+                },
+                "parameters": null
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Automation/automationAccounts', parameters('automationAccounts_aa_ase_uat_hscope_name_1'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/networkSecurityGroups/sg-ase-uat-hscope/securityRules/default-allow-rdp'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_sg_ase_uat_hscope_name'), '/', parameters('securityRules_default_allow_rdp_name'))]",
+            "apiVersion": "2017-06-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "3389",
+                "sourceAddressPrefix": "101.178.166.64/32",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 1000,
+                "direction": "Inbound",
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]"
+            ]
+        },
+        {
+            "comments": "Generalized from resource: '/subscriptions/1776d87d-eb33-4c16-9eaa-972c0016d3e4/resourceGroups/rg-ase-uat-healthscope/providers/Microsoft.Network/networkSecurityGroups/sg-ase-uat-hscope/securityRules/allow-sql-melb'.",
+            "type": "Microsoft.Network/networkSecurityGroups/securityRules",
+            "name": "[concat(parameters('networkSecurityGroups_sg_ase_uat_hscope_name'), '/', parameters('securityRules_allow_sql_melb_name'))]",
+            "apiVersion": "2017-06-01",
+            "scale": null,
+            "properties": {
+                "provisioningState": "Succeeded",
+                "protocol": "TCP",
+                "sourcePortRange": "*",
+                "destinationPortRange": "1433",
+                "sourceAddressPrefix": "101.178.166.64/32",
+                "destinationAddressPrefix": "*",
+                "access": "Allow",
+                "priority": 1010,
+                "direction": "Inbound",
+                "sourceAddressPrefixes": [],
+                "destinationAddressPrefixes": []
+            },
+            "dependsOn": [
+                "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroups_sg_ase_uat_hscope_name'))]"
+            ]
+        }
+    ]
+}
